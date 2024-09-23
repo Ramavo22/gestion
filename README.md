@@ -49,5 +49,53 @@ Voici une liste de prompt à savoir
 C'est un projet pour but de faire une gestion analytique d'une entreprise.
 Ceci appliquera évidemment la notion de gestion analytique
 
-## Fonctionnalité à faire
+## Conception
 
+Table type_centre
+
+- id
+- label
+
+Table centre
+
+- id
+- label
+- id_type_centre
+
+Table unity
+
+- id
+- label
+
+Table type_charge
+
+- id
+- label
+
+Table nature
+
+- id
+- label
+
+Table charge
+
+- id
+- montant_total
+- id_unity
+- id_type_charge
+- id_nature
+
+Table charge_centre
+
+- id_charge
+- id_centre
+- montant
+- pourcentage
+
+## Fonctionnalité
+
+- CRUD pour chaque entité + getById
+- Calcul pourcentage du cout charge par centre
+- Calcul des charges total par centre
+- Calcul de repartition de cout du centre de type structure
+- Calcul du prix unitaire théorique

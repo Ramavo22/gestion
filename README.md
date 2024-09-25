@@ -72,6 +72,11 @@ Table type_charge
 - id
 - label
 
+Table Rubrique
+
+- id
+- Label
+
 Table nature
 
 - id
@@ -80,6 +85,8 @@ Table nature
 Table charge
 
 - id
+- id_exercice
+- id_rubrique
 - montant_total
 - id_unity
 - id_type_charge
@@ -94,8 +101,22 @@ Table charge_centre
 
 ## Fonctionnalité
 
-- CRUD pour chaque entité + getById
-- Calcul pourcentage du cout charge par centre
-- Calcul des charges total par centre
-- Calcul de repartition de cout du centre de type structure
-- Calcul du prix unitaire théorique
+- Comptablité analytique
+
+  - CRUD pour chaque entité + getById
+  - Calcul pourcentage du cout charge par centre
+  - Calcul des charges total par centre
+  - Calcul de repartition de cout du centre de structure
+  - Calcul du prix unitaire théorique
+  - Resultat analytique
+
+- Comptabilité général
+
+  - Resultat general (supposition de prix vente et faire les charges)
+
+## Termes
+
+- Type de charge: Incorporable/corporable/suppletive
+- Type de centre: Structure/Operationnel
+- Nature: Fixe/Variable/Null
+- 

@@ -4,8 +4,10 @@ import java.sql.Date;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import mg.itu.gestion.entity.Charge;
 import mg.itu.gestion.entity.Rubrique;
@@ -22,10 +24,20 @@ public class ChargeService {
     @Autowired
     ChargeRepository chargeRepository;
 
+    @Autowired
+    RubriqueService rubriqueService;
 
+
+    @Transactional(rollbackFor = Exception.class)
     public void save(Integer rubriqueId,Double montantTotal,Short unityId,Date d){
+
+        Rubrique rubrique = rubriqueService.findById(rubriqueId);
+
+        // force hibernate a loader la rubriqueCentre
+        Hibernate.initialize(rubrique.getRubriqueCentre());
+
         Charge charge = Charge.builder()
-                    .rubrique(Rubrique.builder().id(rubriqueId).build())
+                    .rubrique(rubrique)
                     .montant_total(montantTotal)
                     .unity(Unity.builder().id(unityId).build())
                     .dateAction(d)
@@ -33,9 +45,9 @@ public class ChargeService {
 
         charge = chargeRepository.save(charge);
 
-        List<RubriqueCentre> rubriqueCentres = charge.getRubrique().getRubriqueCentre();
+        
 
-        for (RubriqueCentre rubriqueCentre : rubriqueCentres) {
+        for (RubriqueCentre rubriqueCentre : rubrique.getRubriqueCentre()) {
             chargeCentreService.save(charge.getId(),rubriqueCentre.getCentre(), rubriqueCentre.getPourcentage(), ((montantTotal*rubriqueCentre.getPourcentage())/100));
         }
     }

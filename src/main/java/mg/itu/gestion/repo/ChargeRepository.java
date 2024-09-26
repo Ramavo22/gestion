@@ -6,4 +6,5 @@ import mg.itu.gestion.entity.Charge;
 
 public interface ChargeRepository extends JpaRepository<Charge,Long>{
 
+    
 }

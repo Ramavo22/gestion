@@ -29,7 +29,7 @@ public class RubriqueCentre {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rubrique_id")
     Rubrique rubrique;
-
+    
     @ManyToOne
     @JoinColumn(name = "centre_id")
     Centre centre;

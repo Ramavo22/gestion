@@ -2,6 +2,7 @@ package mg.itu.gestion.service;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,10 +57,13 @@ public class RubriqueService {
         return rubriqueRepository.findAll();
     }
 
+    @Transactional
     public Rubrique findById(Integer id){
-        return rubriqueRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Rubrique not found"));
+        Rubrique rubrique = rubriqueRepository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Rubrique not found"));
+        Hibernate.initialize(rubrique.getRubriqueCentre());
+        return rubrique;
     }
-
+    
     
 }

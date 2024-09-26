@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import mg.itu.gestion.entity.Nature;
 import mg.itu.gestion.entity.Rubrique;
+import mg.itu.gestion.entity.TypeCharge;
 import mg.itu.gestion.repo.RubriqueRepository;
 
 @Service
@@ -19,10 +21,13 @@ public class RubriqueService {
     @Autowired
     RubriqueRepository rubriqueRepository;
 
+    // Miampy anle Type charge sy Nature
     @Transactional
-    public void save(String label, String[] centresS,String[] pourcentagesS){
+    public void save(String label,Short typeChargeId,Short natureId, String[] centresS,String[] pourcentagesS){
         Rubrique rubrique = Rubrique.builder()
                         .label(label)
+                        .typeCharge(TypeCharge.builder().id(typeChargeId).build())
+                        .nature(Nature.builder().id(natureId).build())
                         .build();
 
         rubrique = rubriqueRepository.save(rubrique);
@@ -49,6 +54,11 @@ public class RubriqueService {
 
     public List<Rubrique> findAll(){
         return rubriqueRepository.findAll();
+    }
+
+    public Rubrique findById(Integer id){
+        return rubriqueRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Rubrique not found"));
     }
 
     

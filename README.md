@@ -118,5 +118,4 @@ Table charge_centre
 
 - Type de charge: Incorporable/corporable/suppletive
 - Type de centre: Structure/Operationnel
-- Nature: Fixe/Variable/Null
-- 
+- Nature: Fixe/Variable

@@ -1,14 +1,17 @@
 package mg.itu.gestion.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,19 +39,10 @@ public class Charge {
     @JoinColumn(name = "unity_id")
     Unity unity;
 
-    @ManyToOne
-    @JoinColumn(name = "type_charge_id")
-    TypeCharge typeCharge;
-
-    @ManyToOne
-    @JoinColumn(name = "nature_id")
-    Nature nature;
-
     @Column
     Date dateAction;
 
-
-
-
+    @OneToMany(mappedBy = "charge",fetch = FetchType.LAZY)
+    List<ChargeCentre> chargeCentre;
 
 }

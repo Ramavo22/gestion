@@ -1,7 +1,5 @@
 package mg.itu.gestion.entity;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,35 +8,31 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-public class Rubrique {
+public class ChargeCentre {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "charge_id",nullable = false)
+    Charge charge;
+
+    @ManyToOne
+    @JoinColumn(name ="centre_id")
+    Centre centre;
 
     @Column
-    String label;
+    Double pourcentage;
 
-    @ManyToOne
-    @JoinColumn(name = "type_charge_id")
-    TypeCharge typeCharge;
-
-    @ManyToOne
-    @JoinColumn(name = "nature_id")
-    Nature nature;
-
-    @OneToMany(mappedBy = "rubrique",fetch = FetchType.LAZY)
-    List<RubriqueCentre> rubriqueCentre;
+    @Column
+    Double montant;    
 }

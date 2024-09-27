@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Analytique</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/submenu.js"></script>
+</head>
+<body>
+    <header>
+        <!-- Barre de navigation avec Bootstrap -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="#" alt="#" width="40" height="40" class="d-inline-block align-text-top">
+                    Gestion Analytique
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Starter Page</a>
+                        </li>
+                        <!-- Dropdown pour "Overview" -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="overviewDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Overview
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
+                                <li><a class="dropdown-item" href="#">Charges</a></li>
+                                <li><a class="dropdown-item" href="#">Coûts par centre</a></li>
+                                <li><a class="dropdown-item" href="#">Coûts unitaires</a></li>
+                            </ul>
+                        </li>
+                        <!-- Dropdown pour "Tables" -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Tables
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <!-- Sous-menu pour Types -->
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Types</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Charges</a></li>
+                                        <li><a class="dropdown-item" href="#">Centre</a></li>
+                                    </ul>
+                                </li>
+                                <!-- Autres éléments du menu -->
+                                <li><a class="dropdown-item" href="#">Unites</a></li>
+                                <li><a class="dropdown-item" href="#">Natures</a></li>
+                                <li><a class="dropdown-item" href="#">Charges</a></li>
+                                <li><a class="dropdown-item" href="list-centre.html">Centres</a></li>
+                                <li><a class="dropdown-item" href="#">Charges par Centre</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <!-- Contenu principal -->
+        <div class="text-center">
+            <h1 class="display-4">Bienvenue à la Gestion Analytique</h1>
+            <p class="lead">Explorez vos données avec des tableaux et des analyses détaillées.</p>
+    
+            <!-- Formulaire d'insertion de fichier CSV -->
+            <form action="/import_csv" method="post" enctype="multipart/form-data" class="mt-4">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Importer vos données CSV</label>
+                    <input class="form-control" type="file" id="formFile" name="csvFile" accept=".csv">
+                </div>
+                <button type="submit" class="btn btn-primary">Importer des données</button>
+                <a href="#" class="btn btn-secondary ms-2">Commencer autrement</a>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

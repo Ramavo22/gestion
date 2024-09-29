@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import mg.itu.gestion.entity.Centre;
 import mg.itu.gestion.service.CentreService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+
 
 
 @RestController
@@ -24,7 +28,7 @@ public class CentreController {
 
     @GetMapping("/list")
     ResponseEntity<List<Centre>> getListCentres(){
-        return new ResponseEntity<>( centreService.findAll(),HttpStatus.OK); 
+        return new ResponseEntity<>( centreService.filterCentres(null, null),HttpStatus.OK); 
     }
 
     @PostMapping("/add")
@@ -39,5 +43,47 @@ public class CentreController {
             return new ResponseEntity<>(e.getMessage()+" "+e.getCause(),HttpStatus.INTERNAL_SERVER_ERROR);
        }
     }
+
+    @PostMapping("/delete")
+    public ResponseEntity<String> deleteCentre(@RequestParam Integer id) {
+        try {
+            centreService.delete(id);
+            return new ResponseEntity<>("deleted", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage()+" "+e.getCause(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/find-by-id")
+    public ResponseEntity<?> findByid(@RequestParam Integer id) {
+        try {
+            return new ResponseEntity<>(centreService.findByID(id),HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage()+" "+e.getCause(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("update")
+    public ResponseEntity<?> update(@RequestParam Integer id, @RequestParam String label, @RequestParam Integer typeCentreId ) {
+        try {
+            centreService.update(id, label, typeCentreId);
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage()+" "+e.getCause(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/filter")
+    public List<Centre> filterCentres(
+        @RequestParam(required = false) String label,
+        @RequestParam(required = false) Short typeCentreId
+    ) {
+       
+        System.out.println("from filter");
+        return centreService.filterCentres(label, typeCentreId);
+    }
+    
+    
+    
     
 }

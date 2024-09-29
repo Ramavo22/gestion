@@ -38,6 +38,10 @@ switch ($page) {
         $pageTitle = "Les Types de Charges";
         $pageContent = 'pages/list-type-charge.php';
         break;
+    case 'rubrique':
+        $pageTitle = "Les rubriques";
+        $pageContent = 'pages/list-rubrique.php';
+        break;
 
     // FORMULAIRES
     case 'f-centre':
@@ -47,6 +51,10 @@ switch ($page) {
     case 'f-charge':
         $pageTitle = "Formulaire Charge";
         $pageContent = 'pages/form-charge.php';
+        break;
+    case 'f-rubrique':
+        $pageTitle = "Formulaire rubrique";
+        $pageContent = 'pages/form-rubrique.php';
         break;
     case 'f-charges-centres':
         $pageTitle = "Formulaire Charges par centre";

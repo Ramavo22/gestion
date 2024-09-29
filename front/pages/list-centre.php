@@ -1,11 +1,16 @@
 <?php
-    // Action Filtre
+    
     $datas = getDataUrl(centre."/list");
-    $typeCentres = getDataUrl(typeCentre."/list")
+    // Action Filtre
+    if(isset($_POST['filter'])){
+        $datas = $_POST['donne'];
+    } 
+    $typeCentres = getDataUrl(typeCentre."/list");
+    $i = 1;
 ?>
 
 <main class="container mt-5">
-    <form action="#" method="get" class="row g-3 mb-4">
+    <form action="<?php echo INDEX_TO_BACK."/centre/filtre.php" ?>" method="get" class="row g-3 mb-4">
         <div class="col-md-6">
             <label for="libelle" class="form-label">Libellé</label>
             <input type="text" class="form-control" id="libelle" name="libelle" placeholder="Entrez le libellé">
@@ -38,16 +43,16 @@
         <tbody>
         <?php foreach ($datas as $data){ ?>
             <tr>
-                <th scope="row"><?php echo $data['id'] ?></th>
+                <th scope="row"><?php echo $i ?></th>
                 <td><?php echo $data['label'] ?></td>
                 <td><?php echo $data['centre']['label'] ?></td>
                 <td>
-                    <a href="#" class="btn btn-warning btn-sm">Modifier</a>
-                    <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                    <a href="index.php?page=f-centre&id=<?php echo $data['id'];  ?>&action=update" class="btn btn-warning btn-sm">Modifier</a>
+                    <a href="<?php echo INDEX_TO_BACK."/centre/supprimerCentre.php?id=".$data['id']; ?>" class="btn btn-danger btn-sm">Supprimer</a>
                 </td>
             </tr>
 
-        <?php } ?>
+        <?php $i++;} ?>
         </tbody>
     </table>
 </main>

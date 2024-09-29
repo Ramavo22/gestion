@@ -31,26 +31,40 @@ public class CentreService {
         centreRepository.save(centre);              
     }
 
-    public void update(String idS,String label,String typeCentre_id){
-
-        Short id = Integer.valueOf(idS).shortValue();
-        Short typeCentre = null;
-
-        // peut etre changer grace à jakarta validation
-        if(typeCentre_id.compareTo("")==0 || typeCentre_id == null){
-            typeCentre = Integer.valueOf(typeCentre_id).shortValue();
-        }
-
+    public void update(Integer id,String label,Integer typeCentre){
         Centre centre = Centre.builder()
-                    .id(id)
+                    .id(id.shortValue())
                     .label(label)
-                    .centre(TypeCentre.builder().id(typeCentre).build())
+                    .centre(TypeCentre.builder().id(typeCentre.shortValue()).build())
                     .build();
 
         centreRepository.save(centre);
     }
 
-    public List<Centre> findAll(){
-        return centreRepository.findAll();
+    // Méthode de filtrage qui prend en compte plusieurs paramètres
+    public List<Centre> filterCentres(String label, Short typeCentreId) {
+        if (label != null && typeCentreId != null) {
+            return centreRepository.findByLabelContainingAndCentreId(label, typeCentreId);
+        } else if (label != null) {
+            return centreRepository.findByLabelContaining(label);
+        } else if (typeCentreId != null) {
+            return centreRepository.findByCentreId(typeCentreId);
+        } else {
+            return centreRepository.findAll(); // Retourner tous les centres si aucun critère n'est fourni
+        }
     }
+
+    public Centre findByID(Integer id){
+        return centreRepository.findById(id.shortValue())
+        .orElseThrow(() -> new IllegalArgumentException("Centre introuvable"));
+    }
+
+    public void delete (Integer id){
+        Centre centre = centreRepository.findById(id.shortValue())
+            .orElseThrow(() -> new IllegalArgumentException("Centre introuvable"));
+
+        centreRepository.delete(centre);
+    }
+
+
 }

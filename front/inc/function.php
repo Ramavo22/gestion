@@ -1,7 +1,18 @@
 <?php 
     require_once "constant.php";
 
-    function getDataUrl($url) {
+    function getDataUrl($url, $data = []) {
+
+
+        // Si le tableau $data n'est pas vide, on ajoute les paramètres à l'URL
+        if (!empty($data)) {
+            // Convertir le tableau associatif en chaîne de requête
+            $queryString = http_build_query($data);
+
+            // Ajouter la chaîne de requête à l'URL
+            $url .= (strpos($url, '?') === false ? '?' : '&') . $queryString;
+        }
+
         $url = JAVA_URL.$url;
 
         // Initialiser cURL
@@ -64,5 +75,26 @@
 
         return $response;
     }
+
+    function redirection($page, $data) {
+        $url = PHP_URL . "?page=" . $page;
+    
+
+        $donnee = [ 'donne' => $data, 'filter' => "nice"];
+        // Initialiser cURL pour envoyer les données
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($donnee));
+    
+        $response = curl_exec($ch);
+        curl_close($ch);
+    
+        // Rediriger ensuite l'utilisateur
+        header("Location: " . $url);
+        exit();
+    }
+    
+    
 
 ?>

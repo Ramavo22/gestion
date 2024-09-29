@@ -68,14 +68,14 @@
             <tr>
                 <th scope="row"><?php echo $i; $i++ ?></th>
                 <td><?php echo $charge['rubrique']['label']; ?></td>
-                <td><?php echo $charge['montant_total']; ?></td>
+                <td><?php echo number_format($charge['montant_total'],2)  ; ?></td>
                 <td><?php echo $charge['unity']['label']; ?></td>
                 <td><?php echo $charge['rubrique']['typeCharge']['label']; ?></td>
                 <td><?php echo $charge['rubrique']['nature']['label'] ?> </td>
                 <td>
                 <?php foreach($charge['chargeCentre'] as $chargeCentre){ ?>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item py-1"><?php echo $chargeCentre['centre']['label'].': '.$chargeCentre['montant'].'Ar'."(".$chargeCentre['pourcentage']."%)"; ?></li>
+                        <li class="list-group-item py-1"><?php echo $chargeCentre['centre']['label'].': '.number_format($chargeCentre['montant'],2).'Ar'."(".$chargeCentre['pourcentage']."%)"; ?></li>
                     </ul>
                 <?php }?>
                 </td>

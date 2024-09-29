@@ -16,4 +16,3 @@ rem Copier les fichiers du dossier front dans le dossier de destination
 xcopy /s /e /y "%source_dir%" "%target_dir%"
 
 echo Copie terminée !
-pause

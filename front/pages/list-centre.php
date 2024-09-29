@@ -1,7 +1,7 @@
 <?php
     // Action Filtre
-
-    $datas = getDataUrl("/centre/list");
+    $datas = getDataUrl(centre."/list");
+    $typeCentres = getDataUrl(typeCentre."/list")
 ?>
 
 <main class="container mt-5">
@@ -14,13 +14,14 @@
             <label for="typeCentre" class="form-label">Type de Centre</label>
             <select id="typeCentre" class="form-select" name="type_centre">
                 <option selected value="">Tous les types</option>
-                <option value="1">Opérationnel</option>
-                <option value="2">Structure</option>
+            <?php foreach ($typeCentres as $typeCentre){ ?>
+                <option value="<?php echo $typeCentre['id']?>"><?php echo $typeCentre['label'] ?></option>
+            <?php }?>
             </select>
         </div>
         <div class="col-12 text-center">
             <button type="submit" class="btn btn-primary">Filtrer</button>
-            <a href="<?php echo INDEX_TO_BACK."/AjoutCentre.php" ?>" class="btn btn-success ms-2">Ajouter un centre</a>
+            <a href="index.php?page=f-centre" class="btn btn-success ms-2">Ajouter un centre</a>
         </div>
     </form>
 
@@ -31,7 +32,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Libellé</th>
                 <th scope="col">Type de Centre</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Actions hehe</th>
             </tr>
         </thead>
         <tbody>

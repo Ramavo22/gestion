@@ -7,18 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mg.itu.gestion.entity.Centre;
-import mg.itu.gestion.service.CentreService;
+import mg.itu.gestion.entity.TypeCentre;
+import mg.itu.gestion.service.TypeCentreService;
 
 @RestController
-@RequestMapping("centre")
-public class CentreController {
+@RequestMapping("type-centre")
+public class TypeCentreController {
 
     @Autowired
-    CentreService centreService;
+    TypeCentreService typeCentreService;
+
 
     @GetMapping("/list")
-    List<Centre> getListCentres(){
-        return centreService.findAll();
+    List<TypeCentre> getList(){
+        return typeCentreService.findAll();
     }
+    
 }

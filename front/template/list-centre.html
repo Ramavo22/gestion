@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Analytique - Filtrage</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/submenu.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- Barre de navigation avec Bootstrap -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="#" alt="#" width="40" height="40" class="d-inline-block align-text-top">
+                    Gestion Analytique
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Starter Page</a>
+                        </li>
+                        <!-- Dropdown pour "Overview" -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="overviewDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Overview
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
+                                <li><a class="dropdown-item" href="#">Charges</a></li>
+                                <li><a class="dropdown-item" href="#">Coûts par centre</a></li>
+                                <li><a class="dropdown-item" href="#">Coûts unitaires</a></li>
+                            </ul>
+                        </li>
+                        <!-- Dropdown pour "Tables" -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Tables
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <!-- Sous-menu pour Types -->
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Types</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Charges</a></li>
+                                        <li><a class="dropdown-item" href="#">Centre</a></li>
+                                    </ul>
+                                </li>
+                                <!-- Autres éléments du menu -->
+                                <li><a class="dropdown-item" href="#">Unites</a></li>
+                                <li><a class="dropdown-item" href="#">Natures</a></li>
+                                <li><a class="dropdown-item" href="#">Charges</a></li>
+                                <li><a class="dropdown-item" href="list-centre.html">Centres</a></li>
+                                <li><a class="dropdown-item" href="#">Charges par Centre</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <form action="/filter" method="get" class="row g-3 mb-4">
+            <div class="col-md-6">
+                <label for="libelle" class="form-label">Libellé</label>
+                <input type="text" class="form-control" id="libelle" name="libelle" placeholder="Entrez le libellé">
+            </div>
+            <div class="col-md-6">
+                <label for="typeCentre" class="form-label">Type de Centre</label>
+                <select id="typeCentre" class="form-select" name="type_centre">
+                    <option selected value="">Tous les types</option>
+                    <option value="1">Type 1</option>
+                    <option value="2">Type 2</option>
+                    <option value="3">Type 3</option>
+                </select>
+            </div>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">Filtrer</button>
+                <a href="form-centre.html" class="btn btn-success ms-2">Ajouter un élément</a>
+            </div>
+        </form>
+
+        <!-- Tableau des données -->
+        <table class="table table-borderless">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Libellé</th>
+                    <th scope="col">Type de Centre</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Exemple d'éléments (à remplacer par du contenu dynamique) -->
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Libellé 1</td>
+                    <td>Type 1</td>
+                    <td>
+                        <a href="form-centre.html" class="btn btn-warning btn-sm">Modifier</a>
+                        <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Libellé 2</td>
+                    <td>Type 2</td>
+                    <td>
+                        <a href="form-centre.html" class="btn btn-warning btn-sm">Modifier</a>
+                        <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                    </td>
+                </tr>
+                <!-- Autres éléments... -->
+            </tbody>
+        </table>
+    </main>
+
+</body>
+
+</html>

@@ -15,8 +15,8 @@ public class CentreService {
     @Autowired
     CentreRepository centreRepository;
 
-    public void save(String label, String typeCentre_id){
-        Short typeCentreId = Integer.valueOf(typeCentre_id).shortValue();
+    public void save(String label, Integer typeCentre_id){
+        Short typeCentreId = typeCentre_id.shortValue();
 
 
         Centre centre = Centre.builder()

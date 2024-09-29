@@ -1,5 +1,7 @@
 package mg.itu.gestion.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,6 +30,7 @@ public class RubriqueCentre {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rubrique_id")
+    @JsonIgnore  // Ajoute cette annotation pour éviter la récursion
     Rubrique rubrique;
     
     @ManyToOne

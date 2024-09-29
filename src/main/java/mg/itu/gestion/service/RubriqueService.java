@@ -24,7 +24,7 @@ public class RubriqueService {
 
     // Miampy anle Type charge sy Nature
     @Transactional
-    public void save(String label,Short typeChargeId,Short natureId, String[] centresS,String[] pourcentagesS){
+    public void save(String label,Short typeChargeId,Short natureId, Integer[] centres,Double[] pourcentages){
         Rubrique rubrique = Rubrique.builder()
                         .label(label)
                         .typeCharge(TypeCharge.builder().id(typeChargeId).build())
@@ -40,16 +40,16 @@ public class RubriqueService {
          */
 
         Double pourcentageFinal = 0.0;
-        for (int i = 0; i<centresS.length;++i) {
-            pourcentageFinal+=Double.parseDouble(pourcentagesS[i]);
+        for (int i = 0; i<pourcentages.length;++i) {
+            pourcentageFinal+=pourcentages[i];
         }
 
         if(pourcentageFinal != 100){
             throw new IllegalArgumentException("Pourcentages des rubriques par centres ne donne pas 100%");
         }
 
-        for (int i = 0; i < pourcentagesS.length; i++) {
-            rubriqueCentreService.save(rubrique, centresS[i], pourcentagesS[i]);
+        for (int i = 0; i < pourcentages.length; i++) {
+            rubriqueCentreService.save(rubrique, centres[i].shortValue(), pourcentages[i]);
         }
     }
 

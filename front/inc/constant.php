@@ -15,6 +15,9 @@
     const typeCentre = "/type-centre";
     const charge = "/charge";
     const chargeCentre = "/charge-centre";
+    const rubrique = "/rubrique";
+    const typeCharge = "/type-charge";
+    const nature = "/nature";
 
 
 ?>

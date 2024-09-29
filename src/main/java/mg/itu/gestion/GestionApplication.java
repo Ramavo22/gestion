@@ -20,12 +20,7 @@ public class GestionApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(GestionApplication.class, args);
 
-		CentreService centreService = context.getBean(CentreService.class);
-
-		List<Centre> centres = centreService.filterCentres(null, Short.parseShort("1"));
-		for (Centre centre : centres) {
-			System.out.println(centre);
-		}
+		
 
 		
 

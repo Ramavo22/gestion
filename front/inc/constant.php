@@ -18,6 +18,7 @@
     const rubrique = "/rubrique";
     const typeCharge = "/type-charge";
     const nature = "/nature";
+    const unity = "/unity";
 
 
 ?>

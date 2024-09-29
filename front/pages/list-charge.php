@@ -1,3 +1,9 @@
+<?php 
+    $charges = getDataUrl(charge."/list");
+
+    $i = 1;
+?>
+
 <main class="container mt-5">
     <form action="#" method="get" class="row g-3 mb-4">
         <div class="col-md-12">
@@ -53,22 +59,32 @@
                 <th scope="col">Unité</th>
                 <th scope="col">Type de Charge</th>
                 <th scope="col">Nature</th>
+                <th scope="col">Charges par centres</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
+        <?php foreach($charges as $charge){ ?>
             <tr>
-                <th scope="row">1</th>
-                <td>Achat Papiers</td>
-                <td>1500.00</td>
-                <td>Kg</td>
-                <td>Incorporables</td>
-                <td>Fixes</td>
+                <th scope="row"><?php echo $i; $i++ ?></th>
+                <td><?php echo $charge['rubrique']['label']; ?></td>
+                <td><?php echo $charge['montant_total']; ?></td>
+                <td><?php echo $charge['unity']['label']; ?></td>
+                <td><?php echo $charge['rubrique']['typeCharge']['label']; ?></td>
+                <td><?php echo $charge['rubrique']['nature']['label'] ?> </td>
+                <td>
+                <?php foreach($charge['chargeCentre'] as $chargeCentre){ ?>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item py-1"><?php echo $chargeCentre['centre']['label'].': '.$chargeCentre['montant'].'Ar'."(".$chargeCentre['pourcentage']."%)"; ?></li>
+                    </ul>
+                <?php }?>
+                </td>
                 <td>
                     <a href="#" class="btn btn-warning btn-sm">Modifier</a>
                     <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
                 </td>
             </tr>
+        <?php } ?>
         </tbody>
     </table>
 </main>

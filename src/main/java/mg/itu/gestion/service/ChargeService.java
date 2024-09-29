@@ -51,4 +51,8 @@ public class ChargeService {
             chargeCentreService.save(charge.getId(),rubriqueCentre.getCentre(), rubriqueCentre.getPourcentage(), ((montantTotal*rubriqueCentre.getPourcentage())/100));
         }
     }
+
+    public List<Charge> findAll(){
+        return chargeRepository.findAll();
+    }
 }

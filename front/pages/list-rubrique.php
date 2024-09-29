@@ -56,7 +56,7 @@
                     <td>
                         <ul class="list-group list-group-flush">
                         <?php foreach($data['rubriqueCentre'] as $rubriqueCentre) { ?>
-                            <li class="list-group-item py-1"><?php echo $rubriqueCentre['centre']['label'].": ".$rubriqueCentre['pourcentage']; ?></li>
+                            <li class="list-group-item py-1"><?php echo $rubriqueCentre['centre']['label'].": ".$rubriqueCentre['pourcentage'].'%'; ?></li>
                         <?php } ?>
                         </ul>
                     </td>
@@ -65,7 +65,7 @@
                         <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
                     </td>
                 </tr>
-            <?php } ?>
+            <?php $i++;} ?>
 
                 
         </tbody>

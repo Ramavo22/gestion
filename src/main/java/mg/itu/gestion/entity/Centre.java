@@ -28,5 +28,5 @@ public class Centre {
 
     @ManyToOne
     @JoinColumn( name = "type_centre_id" , nullable = false)
-    TypeCentre centre;
+    TypeCentre typecentre;
 }

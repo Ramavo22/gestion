@@ -21,7 +21,7 @@ public class CentreService {
 
         Centre centre = Centre.builder()
                     .label(label)
-                    .centre(TypeCentre.builder().id(typeCentreId).build())
+                    .typecentre(TypeCentre.builder().id(typeCentreId).build())
                     .build();
         
         /*
@@ -35,7 +35,7 @@ public class CentreService {
         Centre centre = Centre.builder()
                     .id(id.shortValue())
                     .label(label)
-                    .centre(TypeCentre.builder().id(typeCentre.shortValue()).build())
+                    .typecentre(TypeCentre.builder().id(typeCentre.shortValue()).build())
                     .build();
 
         centreRepository.save(centre);

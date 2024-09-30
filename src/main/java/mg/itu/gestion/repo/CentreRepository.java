@@ -8,10 +8,12 @@ import mg.itu.gestion.entity.Centre;
 
 public interface CentreRepository extends JpaRepository<Centre,Short>{
 
-    // Méthode de filtrage par libellé et type de centre
-    List<Centre> findByLabelContainingAndCentreId(String label, Short typeCentreId);
+    // Méthode pour filtrer par libellé et type de centre (relation ManyToOne)
+    List<Centre> findByLabelContainingAndTypecentreId(String label, Short typeCentreId);
 
-    // Si seulement un des critères est fourni
+    // Méthode pour filtrer uniquement par libellé
     List<Centre> findByLabelContaining(String label);
-    List<Centre> findByCentreId(Short typeCentreId);
+
+    // Méthode pour filtrer par TypeCentre seulement
+    List<Centre> findByTypecentreId(Short typeCentreId);
 }

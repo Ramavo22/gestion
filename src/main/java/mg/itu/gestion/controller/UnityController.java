@@ -13,6 +13,8 @@ import mg.itu.gestion.entity.Unity;
 import mg.itu.gestion.service.UnityService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -33,6 +35,19 @@ public class UnityController {
         unityService.save(label);
         return ResponseEntity.ok("Inserted");
     }
+
+    @PostMapping("/delete")
+    public ResponseEntity<?> delete(@RequestParam Integer id) {
+        unityService.delete(id);
+        
+        return ResponseEntity.ok("delete");
+    }
+
+
+    
+
+
+    
     
     
 }

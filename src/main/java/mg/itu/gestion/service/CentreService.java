@@ -21,7 +21,7 @@ public class CentreService {
 
         Centre centre = Centre.builder()
                     .label(label)
-                    .centre(TypeCentre.builder().id(typeCentreId).build())
+                    .typecentre(TypeCentre.builder().id(typeCentreId).build())
                     .build();
         
         /*
@@ -35,7 +35,7 @@ public class CentreService {
         Centre centre = Centre.builder()
                     .id(id.shortValue())
                     .label(label)
-                    .centre(TypeCentre.builder().id(typeCentre.shortValue()).build())
+                    .typecentre(TypeCentre.builder().id(typeCentre.shortValue()).build())
                     .build();
 
         centreRepository.save(centre);
@@ -44,11 +44,11 @@ public class CentreService {
     // Méthode de filtrage qui prend en compte plusieurs paramètres
     public List<Centre> filterCentres(String label, Short typeCentreId) {
         if (label != null && typeCentreId != null) {
-            return centreRepository.findByLabelContainingAndCentreId(label, typeCentreId);
+            return centreRepository.findByLabelContainingAndTypecentreId(label, typeCentreId);
         } else if (label != null) {
             return centreRepository.findByLabelContaining(label);
         } else if (typeCentreId != null) {
-            return centreRepository.findByCentreId(typeCentreId);
+            return centreRepository.findByTypecentreId(typeCentreId);
         } else {
             return centreRepository.findAll(); // Retourner tous les centres si aucun critère n'est fourni
         }

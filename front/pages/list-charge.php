@@ -1,5 +1,10 @@
 <?php 
     $charges = getDataUrl(charge."/list");
+    $listeByCentre=getDataUrl(charge."/listByCentreForYear");
+    $totalMontant =getDataUrl(charge."/TotalChargeForYear"); // Exemple de total pour la colonne Montant Total
+    
+
+
 
     $i = 1;
 
@@ -12,7 +17,6 @@
         }
     }
 
-$totalMontant = 15000000; // Exemple de total pour la colonne Montant Total
 $totauxCentres = [
     'Impression' => 2000000, 
     'Administration' => 3000000, 
@@ -121,9 +125,9 @@ $totauxCentres = [
                     <th colspan="2" class="text-end">Total :</th>
                     <th><?php echo number_format($totalMontant, 2); ?></th>
                     <th colspan="3"></th>
-                    <?php foreach ($centres as $centre): ?>
+                    <?php foreach ($listeByCentre as $centre): ?>
                         <th>
-                            <?php echo isset($totauxCentres[$centre]) ? number_format($totauxCentres[$centre], 2) : '-'; ?>
+                            <?php echo isset($centre['montant']) ? number_format($centre['montant'], 2) : '-'; ?>
                         </th>
                     <?php endforeach; ?>
                     <th></th>

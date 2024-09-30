@@ -8,7 +8,10 @@ switch ($page) {
         $pageTitle = "Accueil";
         $pageContent = 'pages/home.php';
         break;
-
+    case 'dashboard':
+        $pageTitle = "Tableau de bord";
+        $pageContent = 'pages/dashboard.php';
+        break;
     // LISTES
     case 'centres':
         $pageTitle = "Les Centres";

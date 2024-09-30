@@ -45,7 +45,7 @@
             <tr>
                 <th scope="row"><?php echo $i ?></th>
                 <td><?php echo $data['label'] ?></td>
-                <td><?php echo $data['centre']['label'] ?></td>
+                <td><?php echo $data['typecentre']['label'] ?></td>
                 <td>
                     <a href="index.php?page=f-centre&id=<?php echo $data['id'];  ?>&action=update" class="btn btn-warning btn-sm"><i class="bi-pencil-square"></i></a>
                     <a href="<?php echo INDEX_TO_BACK."/centre/supprimerCentre.php?id=".$data['id']; ?>" class="btn btn-danger btn-sm"><i class="bi-trash2-fill"></i></a>

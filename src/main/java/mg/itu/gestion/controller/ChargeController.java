@@ -3,6 +3,7 @@ package mg.itu.gestion.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import mg.itu.gestion.service.ChargeCentreService;
 import mg.itu.gestion.service.ChargeService;
 
 import java.sql.Date;
@@ -21,10 +22,22 @@ public class ChargeController {
 
     @Autowired
     ChargeService chargeService;
+    @Autowired
+    ChargeCentreService chargeCentreService;
     
     @GetMapping("/list")
     public ResponseEntity<?> getList() {
         return new ResponseEntity<>(chargeService.findAll(),HttpStatus.OK);
+    }
+   
+    @GetMapping("/listByCentreForYear")
+    public ResponseEntity<?> getListTotal() {
+        return new ResponseEntity<>(chargeCentreService.findTotalMontantByCentreForYear(2024),HttpStatus.OK);
+    }
+   
+    @GetMapping("/TotalChargeForYear")
+    public ResponseEntity<?> getTotalCharge() {
+        return new ResponseEntity<>(chargeCentreService.getTotalMontantChargeForYear(2024),HttpStatus.OK);
     }
 
     @PostMapping("/add")

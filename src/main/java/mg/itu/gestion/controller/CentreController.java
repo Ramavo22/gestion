@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import mg.itu.gestion.entity.Centre;
+import mg.itu.gestion.repo.CentreRepository;
 import mg.itu.gestion.service.CentreService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,9 +27,12 @@ public class CentreController {
     @Autowired
     CentreService centreService;
 
+    @Autowired
+    CentreRepository centreRepository;
+
     @GetMapping("/list")
     ResponseEntity<List<Centre>> getListCentres(){
-        return new ResponseEntity<>( centreService.filterCentres(null, null),HttpStatus.OK); 
+        return new ResponseEntity<>( centreRepository.findAll(),HttpStatus.OK); 
     }
 
     @PostMapping("/add")
@@ -71,19 +75,6 @@ public class CentreController {
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage()+" "+e.getCause(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
-
-    @GetMapping("/filter")
-    public List<Centre> filterCentres(
-        @RequestParam(required = false) String label,
-        @RequestParam(required = false) Short typeCentreId
-    ) {
-       
-        System.out.println("from filter");
-        return centreService.filterCentres(label, typeCentreId);
-    }
-    
-    
-    
+    }    
     
 }

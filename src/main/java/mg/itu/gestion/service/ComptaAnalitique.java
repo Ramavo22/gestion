@@ -59,7 +59,7 @@ public class ComptaAnalitique {
         return this.getTotalChargesByTypeCharge(id.shortValue());
     }
 
-    List<TotalCharge_Centre> getTotalChargeStruture( List<TotalCharge_Centre> charge_Centres){
+    public List<TotalCharge_Centre> getTotalChargeStruture( List<TotalCharge_Centre> charge_Centres){
         List<TotalCharge_Centre> structure = new ArrayList<>();
         for (TotalCharge_Centre totalCharge_Centre : charge_Centres) {
             if(totalCharge_Centre.centre().getTypecentre().getId() == 1){
@@ -68,7 +68,7 @@ public class ComptaAnalitique {
         }
         return structure;
     }
-    List<TotalCharge_Centre> getTotalChargeOperationnel( List<TotalCharge_Centre> charge_Centres){
+    public List<TotalCharge_Centre> getTotalChargeOperationnel( List<TotalCharge_Centre> charge_Centres){
         List<TotalCharge_Centre> structure = new ArrayList<>();
         for (TotalCharge_Centre totalCharge_Centre : charge_Centres) {
             if(totalCharge_Centre.centre().getTypecentre().getId() == 2){

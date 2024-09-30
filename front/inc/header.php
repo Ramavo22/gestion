@@ -28,7 +28,11 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="index.php?page=home">Starter Page</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <!-- Mbola tsisy io page io fa mbola mila foronona sy configurena redirection any -->
+                            <a class="nav-link active" href="index.php?page=dashboard">Dashboard</a>
+                        </li>
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="overviewDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Overview</a>
                             <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
@@ -36,24 +40,24 @@
                                 <li><a class="dropdown-item" href="#">Coûts par centre</a></li>
                                 <li><a class="dropdown-item" href="#">Coûts unitaires</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Tables</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li class="dropdown-submenu">
+                                <!-- <li class="dropdown-submenu">
                                     <a class="dropdown-item dropdown-toggle" href="#">Types</a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="index.php?page=type-charges">Charges</a></li>
                                         <li><a class="dropdown-item" href="index.php?page=type-centres">Centre</a></li>
                                     </ul>
                             
-                                </li>
+                                </li> -->
                                 <li><a class="dropdown-item" href="index.php?page=unites">Unites</a></li>
-                                <li><a class="dropdown-item" href="index.php?page=natures">Natures</a></li>
+                                <li><a class="dropdown-item" href="index.php?page=rubrique">Rubriques</a></li>
                                 <li><a class="dropdown-item" href="index.php?page=charges">Charges</a></li>
                                 <li><a class="dropdown-item" href="index.php?page=centres">Centres</a></li>
-                                <li><a class="dropdown-item" href="index.php?page=charges-centres">Charges par Centre</a></li>
+                                <!-- <li><a class="dropdown-item" href="index.php?page=charges-centres">Charges par Centre</a></li> -->
                             </ul>
                         </li>
                     </ul>

@@ -38,8 +38,8 @@ switch ($page) {
         $pageTitle = "Les Types de Charges";
         $pageContent = 'pages/list-type-charge.php';
         break;
-    case 'rubrique':
-        $pageTitle = "Les rubriques";
+    case 'rubriques':
+        $pageTitle = "Les Rubriques";
         $pageContent = 'pages/list-rubrique.php';
         break;
 

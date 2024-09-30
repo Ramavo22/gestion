@@ -2,11 +2,18 @@
     
     $datas = getDataUrl(rubrique."/list");
     $i = 1;
-
+    $centres = [];
+    foreach ($datas as $data) {
+        foreach ($data['rubriqueCentre'] as $rubriqueCentre) {
+            if (!in_array($rubriqueCentre['centre']['label'], $centres)) {
+                $centres[] = $rubriqueCentre['centre']['label'];
+            }
+        }
+    }
 ?>
 
 <main class="container mt-5">
-    <form action="#" method="get" class="row g-3 mb-4">
+    <!-- <form action="#" method="get" class="row g-3 mb-4">
         <div class="col-md-12">
             <label for="libelle" class="form-label">Libellé</label>
             <input type="text" class="form-control" id="libelle" name="libelle" placeholder="Entrez le libellé">
@@ -27,48 +34,58 @@
                 <option value="2">Variables</option>
             </select>
         </div>
-
-        <div class="col-12 text-center">
             <button type="submit" class="btn btn-primary">Filtrer</button>
-            <a href="index.php?page=f-rubrique" class="btn btn-success ms-2">Ajouter une rubrique</a>
-        </div>
-    </form>
 
+    </form> -->
+        <div class="col-12 mb-2 text-center">
+            <a href="index.php?page=f-rubrique" class="btn btn-outline-warning ms-2">Ajouter une rubrique</a>
+        </div>
+
+    <div class="table-responsive"> <!-- Activer le défilement horizontal -->
         <table class="table table-borderless">
-        <thead class="table-light">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Libellé</th>
-                <th scope="col">Type de charge</th>
-                <th scope="col">Nature</th>
-                <th scope="col">Centre Concernée</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Libellé</th>
+                    <th scope="col">Type de charge</th>
+                    <th scope="col">Nature</th>
+                    <!-- Colonnes dynamiques pour chaque centre -->
+                    <?php foreach($centres as $centre): ?>
+                        <th scope="col"><?php echo $centre; ?></th>
+                    <?php endforeach; ?>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
             <?php foreach($datas as $data){ ?>
                 <tr>
-                    <th scope="row"><?php  echo $i;?></th>
+                    <th scope="row"><?php echo $i; $i++ ?></th>
                     <td><?php echo $data['label']; ?></td>
-                    <td scope="col"><?php echo $data['typeCharge']['label']; ?></td>
-                    <td scope="col"><?php echo $data['nature']['label']; ?></td> 
+                    <td><?php echo $data['typeCharge']['label']; ?></td>
+                    <td><?php echo $data['nature']['label']; ?></td>
+                    <!-- Afficher les pourcentages par centre -->
+                    <?php foreach($centres as $centre): ?>
+                        <td>
+                            <?php 
+                                $pourcentage = '';
+                                foreach($data['rubriqueCentre'] as $rubriqueCentre) {
+                                    if ($rubriqueCentre['centre']['label'] == $centre) {
+                                        $pourcentage = $rubriqueCentre['pourcentage'].'%';
+                                        break;
+                                    }
+                                }
+                                echo $pourcentage ?: '-';  // Afficher '-' si aucun pourcentage pour ce centre
+                            ?>
+                        </td>
+                    <?php endforeach; ?>
                     <td>
-                        <ul class="list-group list-group-flush">
-                        <?php foreach($data['rubriqueCentre'] as $rubriqueCentre) { ?>
-                            <li class="list-group-item py-1"><?php echo $rubriqueCentre['centre']['label'].": ".$rubriqueCentre['pourcentage'].'%'; ?></li>
-                        <?php } ?>
-                        </ul>
-                    </td>
-                    <td class="d-flex gap-2">
-                        <a href="#" class="btn btn-warning btn-sm">Modifier</a>
-                        <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                        <a href="#" class="btn btn-warning btn-sm"><i class="bi-pencil-square"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm"><i class="bi-trash2-fill"></i></a>
                     </td>
                 </tr>
-            <?php $i++;} ?>
-
-                
-        </tbody>
-    </table>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
 
 </main>

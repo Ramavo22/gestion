@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/submenu.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="assets/img/logo.jfif" alt="" width="40" height="40" class="d-inline-block align-text-top">
+                    <img src="assets/img/logo.jfif" alt="" width="40" height="40" class="d-inline-block align-text-top rounded-5">
                     Gestion Analytique
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -54,9 +55,9 @@
                             
                                 </li> -->
                                 <li><a class="dropdown-item" href="index.php?page=unites">Unites</a></li>
-                                <li><a class="dropdown-item" href="index.php?page=rubrique">Rubriques</a></li>
-                                <li><a class="dropdown-item" href="index.php?page=charges">Charges</a></li>
                                 <li><a class="dropdown-item" href="index.php?page=centres">Centres</a></li>
+                                <li><a class="dropdown-item" href="index.php?page=rubriques">Rubriques</a></li>
+                                <li><a class="dropdown-item" href="index.php?page=charges">Charges</a></li>
                                 <!-- <li><a class="dropdown-item" href="index.php?page=charges-centres">Charges par Centre</a></li> -->
                             </ul>
                         </li>

@@ -2,10 +2,27 @@
     $charges = getDataUrl(charge."/list");
 
     $i = 1;
+
+    $centres = [];
+    foreach ($charges as $charge) {
+        foreach ($charge['chargeCentre'] as $chargeCentre) {
+            if (!in_array($chargeCentre['centre']['label'], $centres)) {
+                $centres[] = $chargeCentre['centre']['label'];
+            }
+        }
+    }
+
+$totalMontant = 15000000; // Exemple de total pour la colonne Montant Total
+$totauxCentres = [
+    'Impression' => 2000000, 
+    'Administration' => 3000000, 
+    'Assemblage et reliure' => 5000000,
+    'Approvisionnement' => 5000000,
+];
 ?>
 
 <main class="container mt-5">
-    <form action="#" method="get" class="row g-3 mb-4">
+    <!-- <form action="#" method="get" class="row g-3 mb-4">
         <div class="col-md-12">
             <label for="libelle" class="form-label">Libellé</label>
             <input type="text" class="form-control" id="libelle" name="libelle" placeholder="Entrez le libellé">
@@ -44,47 +61,74 @@
             </select>
         </div>
 
-        <div class="col-12 text-center">
             <button type="submit" class="btn btn-primary">Filtrer</button>
-            <a href="index.php?page=f-charge" class="btn btn-success ms-2">Ajouter une charge</a>
+    </form> -->
+        <div class="col-12 mb-2 text-center">
+            <a href="index.php?page=f-charge" class="btn btn-outline-warning ms-2">Ajouter une charge</a>
         </div>
-    </form>
 
-    <table class="table table-borderless">
-        <thead class="table-light">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Libellé</th>
-                <th scope="col">Montant Total</th>
-                <th scope="col">Unité</th>
-                <th scope="col">Type de Charge</th>
-                <th scope="col">Nature</th>
-                <th scope="col">Charges par centres</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach($charges as $charge){ ?>
-            <tr>
-                <th scope="row"><?php echo $i; $i++ ?></th>
-                <td><?php echo $charge['rubrique']['label']; ?></td>
-                <td><?php echo number_format($charge['montant_total'],2)  ; ?></td>
-                <td><?php echo $charge['unity']['label']; ?></td>
-                <td><?php echo $charge['rubrique']['typeCharge']['label']; ?></td>
-                <td><?php echo $charge['rubrique']['nature']['label'] ?> </td>
-                <td>
-                <?php foreach($charge['chargeCentre'] as $chargeCentre){ ?>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item py-1"><?php echo $chargeCentre['centre']['label'].': '.number_format($chargeCentre['montant'],2).'Ar'."(".$chargeCentre['pourcentage']."%)"; ?></li>
-                    </ul>
-                <?php }?>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-warning btn-sm">Modifier</a>
-                    <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
-                </td>
-            </tr>
-        <?php } ?>
-        </tbody>
-    </table>
+    <div class="table-responsive"> <!-- Défilement horizontal activé -->
+        <table class="table table-borderless">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Libellé</th>
+                    <th scope="col">Montant Total</th>
+                    <th scope="col">Unité</th>
+                    <th scope="col">Type de Charge</th>
+                    <th scope="col">Nature</th>
+                    <!-- Colonnes dynamiques pour chaque centre -->
+                    <?php foreach ($centres as $centre): ?>
+                        <th scope="col"><?php echo $centre; ?></th>
+                    <?php endforeach; ?>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($charges as $charge) { ?>
+                    <tr>
+                        <th scope="row"><?php echo $i;
+                        $i++ ?></th>
+                        <td><?php echo $charge['rubrique']['label']; ?></td>
+                        <td><?php echo number_format($charge['montant_total'], 2); ?></td>
+                        <td><?php echo $charge['unity']['label']; ?></td>
+                        <td><?php echo $charge['rubrique']['typeCharge']['label']; ?></td>
+                        <td><?php echo $charge['rubrique']['nature']['label'] ?> </td>
+                        <!-- Valeurs par centre -->
+                        <?php foreach ($centres as $centre): ?>
+                            <td>
+                                <?php
+                                $montant = '';
+                                foreach ($charge['chargeCentre'] as $chargeCentre) {
+                                    if ($chargeCentre['centre']['label'] == $centre) {
+                                        $montant = number_format($chargeCentre['montant'], 2) . ' (' . $chargeCentre['pourcentage'] . '%)';
+                                        break;
+                                    }
+                                }
+                                echo $montant ?: '-';  // Affiche '-' si aucun montant pour ce centre
+                                ?>
+                            </td>
+                        <?php endforeach; ?>
+                        <td>
+                            <a href="#" class="btn btn-warning btn-sm"><i class="bi-pencil-square"></i></a>
+                            <a href="#" class="btn btn-danger btn-sm"><i class="bi-trash2-fill"></i></a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="2" class="text-end">Total :</th>
+                    <th><?php echo number_format($totalMontant, 2); ?></th>
+                    <th colspan="3"></th>
+                    <?php foreach ($centres as $centre): ?>
+                        <th>
+                            <?php echo isset($totauxCentres[$centre]) ? number_format($totauxCentres[$centre], 2) : '-'; ?>
+                        </th>
+                    <?php endforeach; ?>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </main>

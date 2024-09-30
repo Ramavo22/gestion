@@ -104,7 +104,6 @@ Table charge_centre
 - Comptablité analytique
 
   - CRUD pour chaque entité + getById
-  - Calcul pourcentage du cout charge par centre
   - Calcul des charges total par centre
   - Calcul de repartition de cout du centre de structure
   - Calcul du prix unitaire théorique

@@ -44,11 +44,11 @@ public class CentreService {
     // Méthode de filtrage qui prend en compte plusieurs paramètres
     public List<Centre> filterCentres(String label, Short typeCentreId) {
         if (label != null && typeCentreId != null) {
-            return centreRepository.findByLabelContainingAndCentreId(label, typeCentreId);
+            return centreRepository.findByLabelContainingAndTypecentreId(label, typeCentreId);
         } else if (label != null) {
             return centreRepository.findByLabelContaining(label);
         } else if (typeCentreId != null) {
-            return centreRepository.findByCentreId(typeCentreId);
+            return centreRepository.findByTypecentreId(typeCentreId);
         } else {
             return centreRepository.findAll(); // Retourner tous les centres si aucun critère n'est fourni
         }

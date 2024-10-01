@@ -1,5 +1,5 @@
 <?php 
-    $charges = getDataUrl(charge."/list");
+    $charges = getDataUrl(charge."/list2");
     $listeByCentre=getDataUrl(charge."/listByCentreForYear");
     $totalMontant =getDataUrl(charge."/TotalChargeForYear"); // Exemple de total pour la colonne Montant Total
     

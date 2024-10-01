@@ -165,4 +165,26 @@ public Map<String, Double> getRepartitionStructureParCentreOperationnel(List<Tot
 
     return repartitionMap;
 }
+
+public Map<String, Double> getPourcentagesParCentre(int year) {
+        // Récupérer la liste des montants par centre pour l'année spécifiée
+        List<TotalCharge_Centre> charge_Centres = this.getTotalMontantByCentreForYear(year);
+        
+        // Calculer le total des montants
+        double totalMontant = charge_Centres.stream()
+            .mapToDouble(TotalCharge_Centre::montant)
+            .sum();
+    
+        // Créer une HashMap pour stocker les pourcentages des centres
+        Map<String, Double> centrePourcentageMap = new HashMap<>();
+    
+        // Calculer les pourcentages pour chaque centre
+        for (TotalCharge_Centre chargeCentre : charge_Centres) {
+            Double pourcentage = (chargeCentre.montant() / totalMontant) * 100;
+            centrePourcentageMap.put(chargeCentre.centre().getLabel(), pourcentage); // Utiliser le nom du centre
+        }
+    
+        // Retourner la Map des pourcentages des centres
+        return centrePourcentageMap;
+    }
 }

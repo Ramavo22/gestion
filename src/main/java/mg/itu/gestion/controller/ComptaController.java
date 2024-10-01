@@ -33,12 +33,15 @@ public class ComptaController {
         List<TotalCharge_Centre> operation = comptaAnalitique.getTotalChargeOperationnel(izyrehetra);
         Map<String, Double> repartitionMap = comptaAnalitique.getRepartitionStructureParCentreOperationnel(struCentres, operation);
 
+        Map<String, Double> pourcentage = comptaAnalitique.getPourcentagesParCentre(2024);
+
         // Préparer les données à renvoyer
         Map<String, Object> response = new HashMap<>();
         response.put("repartition", repartition);
         response.put("structure_centres", struCentres);
         response.put("operationnels", operation);
         response.put("repartition_structure", repartitionMap);
+        response.put("pourcent", pourcentage);
 
         // Retourner les données avec un statut HTTP 200 (OK)
         return ResponseEntity.ok(response);

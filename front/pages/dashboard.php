@@ -1,3 +1,7 @@
+<?php
+    $listeByCentre=getDataUrl("/compta/repartition");
+
+?>
 <main>
     <div class="container mt-5 ">
         <div class="card">
@@ -20,28 +24,18 @@
                         <th class="col">Administration</th>
                         <th class="col">Cout Total</th>
                     </tr>
-                    <tr>
-                        <td>Total plantation</td>
-                        <td>000000</td>
-                        <td>46,30 %</td>
-                        <td>00000</td>
-                        <td>00000</td>
-                    </tr>
-                    <tr>
-                        <td>Total usine</td>
-                        <td>000000</td>
-                        <td>46,30 %</td>
-                        <td>00000</td>
-                        <td>00000</td>
-                    </tr>
-
-                    <tr>
-                        <td>Total General</td>
-                        <td>00000</td>
-                        <td></td>
-                        <td>00000</td>
-                        <td>00000</td>
-                    </tr>
+             <?php for ($i=0; $i <count($listeByCentre['repartition_structure']) ; $i++) { ?>
+             <tr>
+                 <td><?php echo $listeByCentre['operationnels'][$i]['centre']['label'] ?></td>
+                 <td><?php echo number_format($listeByCentre['operationnels'][$i]['montant'],2).'AR'  ?></td>
+                 <td>46,30 %</td>
+                 <td><?php echo $listeByCentre['repartition_structure'][ $listeByCentre['operationnels'][$i]['centre']['label'] ] ?></td>
+                 <td><?php echo number_format ($listeByCentre['repartition'][$i]['montant'],2).'AR' ?></td>
+                </tr>
+                <?php } ?>
+                
+                    
+                  
                 </table>
             </div>
         </div>

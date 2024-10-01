@@ -31,7 +31,7 @@ public class ComptaController {
         List<TotalCharge_Centre> izyrehetra = comptaAnalitique.getTotalMontantByCentreForYear(2024);
         List<TotalCharge_Centre> struCentres = comptaAnalitique.getTotalChargeStruture(izyrehetra);
         List<TotalCharge_Centre> operation = comptaAnalitique.getTotalChargeOperationnel(izyrehetra);
-        Map<Centre, Double> repartitionMap = comptaAnalitique.getRepartitionStructureParCentreOperationnel(struCentres, operation);
+        Map<String, Double> repartitionMap = comptaAnalitique.getRepartitionStructureParCentreOperationnel(struCentres, operation);
 
         // Préparer les données à renvoyer
         Map<String, Object> response = new HashMap<>();

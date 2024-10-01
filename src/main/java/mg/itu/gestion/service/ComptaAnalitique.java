@@ -136,30 +136,33 @@ public class ComptaAnalitique {
     }
 
     // Fonction pour obtenir la répartition des coûts de structure par centre opérationnel
-    public Map<Centre, Double> getRepartitionStructureParCentreOperationnel(List<TotalCharge_Centre> structureCentres, List<TotalCharge_Centre> operationnels) {
-        // Calculer le total des charges opérationnelles
-        double totalChargesOperationnel = operationnels.stream()
-            .mapToDouble(TotalCharge_Centre::montant)
-            .sum();
+public Map<String, Double> getRepartitionStructureParCentreOperationnel(List<TotalCharge_Centre> structureCentres, List<TotalCharge_Centre> operationnels) {
+    // Calculer le total des charges opérationnelles
+    double totalChargesOperationnel = operationnels.stream()
+        .mapToDouble(TotalCharge_Centre::montant)
+        .sum();
 
-        // Créer une HashMap pour stocker la répartition des coûts de structure
-        Map<Centre, Double> repartitionMap = new HashMap<>();
+    // Créer une HashMap pour stocker la répartition des coûts de structure
+    Map<String, Double> repartitionMap = new HashMap<>();
 
-        // Parcourir chaque centre opérationnel pour calculer le pourcentage et la répartition
-        for (TotalCharge_Centre operationnel : operationnels) {
-            // Calculer le pourcentage de ce centre opérationnel par rapport au total
-            double pourcentageOperationnel = (operationnel.montant() / totalChargesOperationnel);
+    // Parcourir chaque centre opérationnel pour calculer le pourcentage et la répartition
+    for (TotalCharge_Centre operationnel : operationnels) {
+        // Calculer le pourcentage de ce centre opérationnel par rapport au total
+        double pourcentageOperationnel = (operationnel.montant() / totalChargesOperationnel);
 
-            // Pour chaque centre de structure, répartir selon le pourcentage opérationnel
-            for (TotalCharge_Centre structure : structureCentres) {
-                // Calculer la part du coût de structure pour ce centre opérationnel
-                double repartitionMontant = structure.montant() * pourcentageOperationnel;
+        // Pour chaque centre de structure, répartir selon le pourcentage opérationnel
+        for (TotalCharge_Centre structure : structureCentres) {
+            // Calculer la part du coût de structure pour ce centre opérationnel
+            double repartitionMontant = structure.montant() * pourcentageOperationnel;
 
-                // Ajouter ou cumuler la répartition dans la map
-                repartitionMap.merge(operationnel.centre(), repartitionMontant, Double::sum);
-            }
+            // Utiliser le label du centre comme clé
+            String centreLabel = operationnel.centre().getLabel();
+
+            // Ajouter ou cumuler la répartition dans la map en utilisant le label du centre comme clé
+            repartitionMap.merge(centreLabel, repartitionMontant, Double::sum);
         }
-
-        return repartitionMap; // Retourner la répartition des coûts de structure
     }
+
+    return repartitionMap;
+}
 }

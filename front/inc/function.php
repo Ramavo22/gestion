@@ -147,7 +147,30 @@ function postJsonDataUrl($url, $data) {
         header("Location: " . $url);
         exit();
     }
-    
-    
+
+
+function calculerTotalParCentre($charges)
+{
+    $totauxParCentre = [];
+
+    // Parcourir chaque charge
+    foreach ($charges as $charge) {
+        // Parcourir les centres associés à chaque charge
+        foreach ($charge['chargeCentres'] as $chargeCentre) {
+            $centreLabel = $chargeCentre['centre']['label'];
+            $montant = $chargeCentre['montantTotalCumule'];
+
+            // Si le centre n'est pas encore dans le tableau des totaux, l'initialiser
+            if (!isset($totauxParCentre[$centreLabel])) {
+                $totauxParCentre[$centreLabel] = 0;
+            }
+
+            // Ajouter le montant au total de ce centre
+            $totauxParCentre[$centreLabel] += $montant;
+        }
+    }
+
+    return $totauxParCentre;
+}
 
 ?>

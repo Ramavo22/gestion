@@ -17,6 +17,10 @@ switch ($page) {
         $pageTitle = "Les Centres";
         $pageContent = 'pages/list-centre.php';
         break;
+    case 'demande':
+        $pageTitle = "Demande";
+        $pageContent = 'pages/Demande.php';
+        break;
     case 'charges':
         $pageTitle = "Les Charges";
         $pageContent = 'pages/list-charge.php';
@@ -47,8 +51,10 @@ switch ($page) {
         $pageTitle = "Formulaire Unite";
         $pageContent = 'pages/form-unite.php';
         break;
-
-    // ELSE
+    case 'message':
+        $pageTitle = "Message board";
+        $pageContent = 'pages/message.php';
+        break;
     default:
         $pageTitle = "Page non trouvée";
         $pageContent = 'pages/404.php';

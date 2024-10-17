@@ -32,7 +32,9 @@
                         <li class="nav-item">
                             <!-- Mbola tsisy io page io fa mbola mila foronona sy configurena redirection any -->
                             <a class="nav-link active" href="index.php?page=dashboard">Dashboard</a>
+                            
                         </li>
+                        <li class="nav-item"><a class="nav-link active" href="index.php?page=message">Message</a></li>
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="overviewDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Overview</a>
@@ -58,6 +60,8 @@
                                 <li><a class="dropdown-item" href="index.php?page=centres">Centres</a></li>
                                 <li><a class="dropdown-item" href="index.php?page=rubriques">Rubriques</a></li>
                                 <li><a class="dropdown-item" href="index.php?page=charges">Charges</a></li>
+                                
+                                <li><a class="dropdown-item" href="index.php?page=demande">Demande</a></li>
                                 <!-- <li><a class="dropdown-item" href="index.php?page=charges-centres">Charges par Centre</a></li> -->
                             </ul>
                         </li>

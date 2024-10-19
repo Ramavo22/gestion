@@ -1,3 +1,14 @@
 .navbar-nav .nav-item {
     margin-right: 5rem;
 }
+.degradeJ {
+    background: rgb(230,230,230);
+    background: linear-gradient(0deg, rgba(230,230,230,1) 31%, rgba(255,193,7,1) 43%);
+}
+
+.max-width {
+    max-width: 40px;
+}
+.max-height {
+    max-height: 40px;
+}

@@ -5,7 +5,7 @@ rem Définir les chemins
 set source_dir=%~dp0front
 
 :: Modifier selon votre workspace
-set target_dir=C:\xampp\htdocs\www\gestion
+set target_dir=C:\xampp\htdocs\asa\gestion
 
 rem Créer le dossier de destination s'il n'existe pas
 if not exist "%target_dir%" (

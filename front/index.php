@@ -3,6 +3,8 @@ require_once "inc/function.php";
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
+$header = 'inc/header.php';
+
 switch ($page) {
     case 'home':
         $pageTitle = "Accueil";
@@ -12,7 +14,6 @@ switch ($page) {
         $pageTitle = "Tableau de bord";
         $pageContent = 'pages/dashboard.php';
         break;
-    // LISTES
     case 'centres':
         $pageTitle = "Les Centres";
         $pageContent = 'pages/list-centre.php';
@@ -20,6 +21,14 @@ switch ($page) {
     case 'demande':
         $pageTitle = "Demande";
         $pageContent = 'pages/Demande.php';
+        break;
+    case 'listdemande':
+        $pageTitle = "List de mes Demandes";
+        $pageContent = 'pages/list-demande.php';
+        break;
+    case 'stock':
+        $pageTitle = "Etat de stock";
+        $pageContent = 'pages/stock.php';
         break;
     case 'charges':
         $pageTitle = "Les Charges";
@@ -55,13 +64,18 @@ switch ($page) {
         $pageTitle = "Message board";
         $pageContent = 'pages/message.php';
         break;
+    case 'connection':
+        $pageTitle = "Connect";
+        $pageContent = 'pages/connection.php';
+        $header = 'inc/header2.php';
+        break;
     default:
         $pageTitle = "Page non trouvée";
         $pageContent = 'pages/404.php';
         break;
 }
 
-include 'inc/header.php';
+include $header;
 
 include $pageContent;
 

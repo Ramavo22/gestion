@@ -41,7 +41,7 @@
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Accordion Item #2
+                        validation avec check box etat
                     </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -53,14 +53,53 @@
                         </div>
                         <div class="row mt-2">
                             <p class="">Cliquer sur pret pour creer un bon <code>variable</code> </p>
-                        </div>
-                        <div class="form-group mb-1 mt-3">
-                            <div class="row">
-                                <div class="col-4 offset-8 col-md-2 offset-md-10 ">
-                                    <form action="#">
-                                        <input type="submit" class="form-control btn btn-warning" name="" id=""
-                                            value="Pret">
-                                    </form>
+                            <div class="col-md-12">
+                                <div class="progress" style="cursor: pointer;" onclick="toggleCheckboxes()">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;"
+                                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                                </div>
+
+                                <div id="checkbox-list" class="mt-3" style="display: none;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">List des validations</h5>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="item1" disabled>
+                                                <label class="form-check-label text-primary" for="item1">
+                                                    Élément 1
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="item2" disabled>
+                                                <label class="form-check-label text-success" for="item2">
+                                                    Élément 2
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="item3" disabled>
+                                                <label class="form-check-label text-danger" for="item3">
+                                                    Élément 3
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="item4" disabled>
+                                                <label class="form-check-label" for="item4">
+                                                    Élément 4
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-1 mt-3">
+                                <div class="row">
+                                    <div class="col-4 offset-8 col-md-2 offset-md-10 ">
+                                        <form action="#">
+                                            <input type="submit" class="form-control btn btn-danger" name="" id=""
+                                                value="Annuler">
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -106,3 +145,13 @@
 
     </div>
 </main>
+<script>
+    function toggleCheckboxes() {
+        var checkboxList = document.getElementById("checkbox-list");
+        if (checkboxList.style.display === "none") {
+            checkboxList.style.display = "block";
+        } else {
+            checkboxList.style.display = "none";
+        }
+    }
+</script>

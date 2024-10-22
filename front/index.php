@@ -18,15 +18,15 @@ switch ($page) {
         $pageTitle = "Les Centres";
         $pageContent = 'pages/list-centre.php';
         break;
-    case 'demande':
+    case 'f-demande':
         $pageTitle = "Demande";
         $pageContent = 'pages/Demande.php';
         break;
-    case 'listdemande':
+    case 'demandes':
         $pageTitle = "List de mes Demandes";
         $pageContent = 'pages/list-demande.php';
         break;
-    case 'stock':
+    case 'stocks':
         $pageTitle = "Etat de stock";
         $pageContent = 'pages/stock.php';
         break;
@@ -60,11 +60,11 @@ switch ($page) {
         $pageTitle = "Formulaire Unite";
         $pageContent = 'pages/form-unite.php';
         break;
-    case 'message':
+    case 'messages':
         $pageTitle = "Message board";
         $pageContent = 'pages/message.php';
         break;
-    case 'connection':
+    case 'f-connection':
         $pageTitle = "Connect";
         $pageContent = 'pages/connection.php';
         $header = 'inc/header2.php';

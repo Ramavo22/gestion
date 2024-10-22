@@ -21,3 +21,6 @@ INSERT INTO centre (label,type_centre_id) VALUES
     ('Massicotage et emballage',2);
 
 
+insert into users (hierachi,login,nom,password,departement_id,role_id) VALUES (1,'admin','RAKOTO','test',1,1);
+insert into departement(is_externe,label) VALUES (false,'admin');
+insert into role (label) VALUES ('directeur');

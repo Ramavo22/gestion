@@ -34,7 +34,7 @@
                             <a class="nav-link " href="index.php?page=dashboard">Dashboard</a>
                             
                         </li>
-                        <li class="nav-item"><a class="nav-link " href="index.php?page=message">Message</a></li>
+                        <li class="nav-item"><a class="nav-link " href="index.php?page=messages">Message</a></li>
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="overviewDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Overview</a>
@@ -56,13 +56,13 @@
                                     </ul>
                             
                                 </li> -->
-                                <li><a class="dropdown-item" href="index.php?page=listdemande">Mes Demande</a></li>
+                                <li><a class="dropdown-item" href="index.php?page=demandes">Mes Demande</a></li>
                                 <li><a class="dropdown-item" href="index.php?page=unites">Unites</a></li>
                                 <li><a class="dropdown-item" href="index.php?page=centres">Centres</a></li>
                                 <li><a class="dropdown-item" href="index.php?page=rubriques">Rubriques</a></li>
                                 <li><a class="dropdown-item" href="index.php?page=charges">Charges</a></li>
-                                <li><a class="dropdown-item" href="index.php?page=demande">Demande</a></li>
-                                <li><a class="dropdown-item" href="index.php?page=stock">Etat de stock</a></li>
+                                <li><a class="dropdown-item" href="index.php?page=f-demande">Demande</a></li>
+                                <li><a class="dropdown-item" href="index.php?page=stocks">Etat de stock</a></li>
                                 <!-- <li><a class="dropdown-item" href="index.php?page=charges-centres">Charges par Centre</a></li> -->
                             </ul>
                         </li>

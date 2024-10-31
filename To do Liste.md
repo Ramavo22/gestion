@@ -77,17 +77,20 @@ Vu que notre règles sera le fait que c'est le responsable de departement qui fa
 - Creation de bon de reception (Lié par un bon de commande)
   - Ajoute Bon de reception
   - Ajouter les besoins dans le stock Entry
+- ajout bon de sortie
 
-### Responseble achats (Equipe C)
+### Responseble achats (Equipe C) (ok)
 
 - Liste des demandes qu'il doit valider
 - Creation de bon de commandes
+  - Interne
+  - Externe
 
-### Responsable des finances (Equipe C)
+### Responsable des finances (Equipe C) (ok)
 
 - Vois les ventes et achats (Bon de commandes) par les services de ventes
-  - get Liste Ventes produits
-  - get Liste Bon de commandes (savoir il a été bien livré)
+  - get Liste Ventes produitsa  
+  - get Liste Bon de commandes (savoir il a été bien livré) (ok)
 - Liste des demandes qu'il doit valider
 
 ### Responsable des ventes (Equipe C)

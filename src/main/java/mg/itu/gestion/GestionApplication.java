@@ -23,14 +23,14 @@ public class GestionApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(GestionApplication.class, args);
 
-		ComptaAnalitique comptaAnalitique = context.getBean(ComptaAnalitique.class);
+		// ComptaAnalitique comptaAnalitique = context.getBean(ComptaAnalitique.class);
 
 
-		List<TotalCharge_Centre> totalChargeCentre = comptaAnalitique.getTotalMontantByCentreForYear(2024);
+		// List<TotalCharge_Centre> totalChargeCentre = comptaAnalitique.getTotalMontantByCentreForYear(2024);
 
-		for (TotalCharge_Centre totalCharge_Centre : totalChargeCentre) {
-			System.out.println(totalCharge_Centre.centre()+" "+totalCharge_Centre.montant());
-		}
+		// for (TotalCharge_Centre totalCharge_Centre : totalChargeCentre) {
+		// 	System.out.println(totalCharge_Centre.centre()+" "+totalCharge_Centre.montant());
+		// }
 
 		
 

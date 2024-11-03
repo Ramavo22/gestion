@@ -93,7 +93,7 @@ Vu que notre règles sera le fait que c'est le responsable de departement qui fa
   - get Liste Bon de commandes (savoir il a été bien livré) (ok)
 - Liste des demandes qu'il doit valider
 
-### Responsable des ventes (Equipe C)
+### Responsable des ventes (Equipe C)(ok)
 
 - Vente les cahiers au clients
 

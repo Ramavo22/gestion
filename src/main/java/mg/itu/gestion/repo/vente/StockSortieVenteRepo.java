@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import mg.itu.gestion.entity.vente.StockVenteSortie;
 
-public interface StockSortieVenteRepo extends JpaRepository<Long, StockVenteSortie>{
+public interface StockSortieVenteRepo extends JpaRepository<StockVenteSortie, Long>{
     
 }
